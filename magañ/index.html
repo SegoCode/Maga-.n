@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Page Title</title>
+		<link rel="stylesheet" href="styles.css" />
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="https://cdn.tailwindcss.com"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" crossorigin="anonymous" />
+	</head>
+	<body>
+		<header>
+			<div style="font-size: 35px; font-weight: bolder">MagaÑ</div>
+			<div>Todos los mangas editados al español</div>
+		</header>
+
+		<div class="corner-notice">
+			<i class="fas fa-bug"></i>
+			<p>Found a bug? <a href="mailto:support@magany.com">Report it here</a></p>
+		  </div>
+		  
+		<div class="search-container">
+			<form>
+			  <input type="text" placeholder="Search..." />
+			  <button type="submit"><i class="fas fa-search"></i></button>
+			</form>
+			<div class="year-selector">
+			  <label for="year-start">From:</label>
+			  <input type="range" min="1900" max="2022" value="1900" id="year-start" class="year-slider">
+			  <label for="year-end">To:</label>
+			  <input type="range" min="1900" max="2022" value="2022" id="year-end" class="year-slider">
+			</div>
+		  </div>
+
+		  <div class="wrapper" style="display:flex; flex-wrap: nowrap;">
+			<button class="tag">Action</button>
+			<button class="tag">Ecchi</button>
+			<button class="tag">Horror</button>
+			<button class="tag">Shounen</button>
+		</div>
+
+		<div class="container" id="magaList"></div>
+		<script src="script.js"></script>
+	</body>
+</html>
