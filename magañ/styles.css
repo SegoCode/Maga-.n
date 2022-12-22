@@ -111,10 +111,13 @@ button {
 }
 
 .wrapper {
-	display: flex;
-	align-items: center;
-	margin: 20px;
-}
+	width: 900px; /* Set the width of the container to 100% */
+	max-width: 900px; /* Set the maximum width of the container to 900px */
+	display: flex; /* Use flexbox to align the buttons */
+	align-items: center; /* Align the buttons to the center of the container */
+	flex-wrap: wrap; /* Wrap the buttons to a new line when they overflow the container */
+	margin: 20px; /* Add a margin around the container */
+  }
 
 .search-container {
 	width: 900px;
@@ -179,42 +182,5 @@ button {
 	text-decoration: none;
   }
 
-  .year-selector {
-	display: flex;
-	align-items: center;
-	margin-left: 16px;
-  }
-  
-  .year-selector label {
-	margin-right: 8px;
-	font-size: 14px;
-	white-space: nowrap;
-  }
-  
-  .year-selector .year-slider {
-	-webkit-appearance: none;
-	width: 120px;
-	height: 8px;
-	background: white;
-	border-radius: 5px;
-	margin: 0 8px;
-	outline: none;
-  }
-  
-  .year-selector .year-slider::-webkit-slider-thumb {
-	-webkit-appearance: none;
-	height: 20px;
-	width: 20px;
-	border-radius: 50%;
-	background: #1a2138;
-	cursor: pointer;
-  }
-  
-  .year-selector .year-slider::-moz-range-thumb {
-	height: 20px;
-	width: 20px;
-	border-radius: 50%;
-	background: #1a2138;
-	cursor: pointer;
-  }
+
   

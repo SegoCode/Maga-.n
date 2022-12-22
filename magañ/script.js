@@ -22,6 +22,29 @@ async function loadList() {
     }
     loadedItems = loadedItems + 50;
     window.addEventListener("scroll", handleInfiniteScroll);
+
+
+    const mangaList = document.getElementById("mangaGender"); // Get the mangaList div from the HTML document
+    const genres = new Set(); // Create a Set to store the unique genres
+
+    // Loop through the JSON array and add each genre to the Set, if the manga has genres
+    for (const manga of objData) {
+      if (manga.hasOwnProperty("genres")) {
+        for (const genre of manga.genres) {
+          genres.add(genre.name);
+        }
+      }
+    }
+    
+    // Loop through the unique genres and create a button for each one
+    for (const genre of genres) {
+      const button = document.createElement("button"); // Create a new button element
+      button.classList.add("tag"); // Add the "tag" class to the button
+      button.textContent = genre; // Set the text content of the button to the genre name
+      mangaList.appendChild(button); // Append the button to the mangaList div
+    }
+
+    
 }
 
 const handleInfiniteScroll = () => {

@@ -24,20 +24,12 @@
 			  <input type="text" placeholder="Search..." />
 			  <button type="submit"><i class="fas fa-search"></i></button>
 			</form>
-			<div class="year-selector">
-			  <label for="year-start">From:</label>
-			  <input type="range" min="1900" max="2022" value="1900" id="year-start" class="year-slider">
-			  <label for="year-end">To:</label>
-			  <input type="range" min="1900" max="2022" value="2022" id="year-end" class="year-slider">
-			</div>
 		  </div>
+		  
 
-		  <div class="wrapper" style="display:flex; flex-wrap: nowrap;">
-			<button class="tag">Action</button>
-			<button class="tag">Ecchi</button>
-			<button class="tag">Horror</button>
-			<button class="tag">Shounen</button>
-		</div>
+		  <button class="show-tags-button">Show all tags</button>
+
+		  <div class="wrapper" id="mangaGender"></div>
 
 		<div class="container" id="magaList"></div>
 		<script src="script.js"></script>
