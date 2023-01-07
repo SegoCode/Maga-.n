@@ -1,15 +1,16 @@
 console.log('%c👋', 'color: #36393e; font-size: 30px;');
 
+var firstLoad =true;
 var loadedItems = 0;
+var realLoaded = 0;
 async function loadList() {
   let url = 'https://gist.githubusercontent.com/SegoCode/70a96b77ca3702efc76474014d5e0b5f/raw/d81aae56f946cc83ac2c5ac196db42cba16eb541/temp.json';
   let objData = await (await fetch(url)).json();
 
-  
   let loadedItemsGoal = loadedItems + 50;
   const searchParams = new URLSearchParams(window.location.search);
   const genderParam = searchParams.get("gender");
-  
+
   for (var i = loadedItems; i < loadedItemsGoal; i++) {
     let addCard = false;
   
@@ -35,19 +36,24 @@ async function loadList() {
             <div>${objData[i].title_spanish}</div>
           </div>
         `;
+        realLoaded++;
       } catch (error) {
         // Fix url_listado_manga undefine para mangas no listados
       }
     }
+ 
   }
 
   loadedItems = loadedItems + 50;
   window.addEventListener("scroll", handleInfiniteScroll);
+  if(loadedItems<objData.length){
+    if(realLoaded<50){
+      loadList();
+    }
+  }
 
-
-  const mangaList = document.getElementById("mangaGender"); // Get the mangaList div from the HTML document
-  
-
+ 
+  if (firstLoad) {
   const genres = new Set(); // Create a Set to store the unique genres
   // Loop through the JSON array and add each genre to the Set, if the manga has genres
   for (const manga of objData) {
@@ -57,10 +63,8 @@ async function loadList() {
       }
     }
   }
-
+  const mangaList = document.getElementById("mangaGender"); // Get the mangaList div from the HTML document
   // Loop through the unique genres and create a button for each one
-
-  if (loadedItems == 50) {
     for (const genre of genres) {
       const button = document.createElement("button"); // Create a new button element
       button.classList.add("tag"); // Add the "tag" class to the button
@@ -78,6 +82,8 @@ async function loadList() {
       });
       mangaList.appendChild(button); // Append the button to the mangaList div
     }
+
+    firstLoad=false;
   }
 
 
@@ -87,9 +93,11 @@ const handleInfiniteScroll = () => {
   if ((window.innerHeight + window.pageYOffset) >= (document.body.offsetHeight - 500)) {
     loadList();
     window.removeEventListener("scroll", handleInfiniteScroll);
+    realLoaded=0;
   }
 }
 
 //init
 loadList();
 window.addEventListener("scroll", handleInfiniteScroll);
+
