@@ -4,7 +4,7 @@ var firstLoad =true;
 var loadedItems = 0;
 var realLoaded = 0;
 async function loadList() {
-  let url = 'https://gist.githubusercontent.com/SegoCode/70a96b77ca3702efc76474014d5e0b5f/raw/d81aae56f946cc83ac2c5ac196db42cba16eb541/temp.json';
+  let url = 'https://raw.githubusercontent.com/SegoCode/Maga-.n/main/database/db.json';
   let objData = await (await fetch(url)).json();
 
   let loadedItemsGoal = loadedItems + 50;
