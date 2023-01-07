@@ -1,4 +1,4 @@
-# Maga-.n
+# MagaÑ
 
 <img src="https://github.com/SegoCode/Maga-.n/blob/main/media/demo.png">
 
