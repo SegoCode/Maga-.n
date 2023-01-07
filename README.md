@@ -6,6 +6,6 @@ MangaÑ una pequeña prueba de concepto en desarrollo que tiene como objetivo of
 
 Sobre el sistema de base de datos es una integración de MyAnimeList y ListadoManga. Una retroalimentación de información entre ambas plataformas web con el objetivo de generar una base de datos muy completa.
 
-El futuro del proyecto sera seguir implantando soluciones poco convencionales a modo de prueba de concepto. Puedes acceder a la web aquí [https://segocode.github.io/Maga-.n/](https://segocode.github.io/Maga-.n/)
+El futuro del proyecto sera seguir implantando soluciones poco convencionales a modo de prueba de concepto. Puedes acceder a la web aquí: [https://segocode.github.io/Maga-.n/](https://segocode.github.io/Maga-.n/)
 
 _Quizás te interese este proyecto relacionado [Anime-History-Viewer](https://github.com/SegoCode/Anime-History-Viewer)_
