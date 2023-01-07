@@ -3,14 +3,14 @@
 import got from 'got';
 import fs from 'fs';
 
-const rawdata = fs.readFileSync('listadoManga.json');
+const rawdata = fs.readFileSync('listado_manga_db.json');
 const mangasEspanol = JSON.parse(rawdata);
 
 const updateMangaData = async (manga) => {
   try {
-    const subResponse = await got(`https://api.jikan.moe/v4/manga?limit=1&q=${manga.nameOriginal}`);
+    const subResponse = await got(`https://api.jikan.moe/v4/manga?limit=1&q=${manga.name_original}`);
     const objResponse = JSON.parse(subResponse.body);
-    delete manga.nameOriginal;
+    delete manga.name_original;
 
     objResponse.data[0].titles.push({
       type: 'Spanish',
