@@ -58,7 +58,7 @@ async function loadList() {
         // Create a "Clear Selection" button
         const clearButton = document.createElement("button");
         clearButton.classList.add("tag");
-        clearButton.textContent = "All genders";
+        clearButton.textContent = "All";
         clearButton.style.display = genderParam ? "inline-block" : "none";
         clearButton.addEventListener("click", () => {
           const currentUrl = new URL(window.location.href);
