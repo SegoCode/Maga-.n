@@ -46,35 +46,56 @@ async function loadList() {
 
     if (firstLoad) {
         const genres = new Set();
-        objData.forEach(manga => {
-            if (manga.hasOwnProperty("genres")) {
-                manga.genres.forEach(genre => genres.add(genre.name));
+        for (const manga of objData) {
+          if (manga.hasOwnProperty("genres")) {
+            for (const genre of manga.genres) {
+              genres.add(genre.name);
             }
-        });
-
+          }
+        }
         const mangaList = document.getElementById("mangaGender");
-        genres.forEach(genre => {
-            const button = document.createElement("button");
-            button.classList.add("tag");
-            button.textContent = genre;
-
-            button.addEventListener("click", () => {
-                const currentUrl = new URL(window.location.href);
-                currentUrl.searchParams.set("gender", genre);
-                window.history.replaceState({}, "", currentUrl.toString());
-                location.reload();
-            });
-
-            mangaList.appendChild(button);
+      
+        // Create a "Clear Selection" button
+        const clearButton = document.createElement("button");
+        clearButton.classList.add("tag");
+        clearButton.textContent = "All genders";
+        clearButton.style.display = genderParam ? "inline-block" : "none";
+        clearButton.addEventListener("click", () => {
+          const currentUrl = new URL(window.location.href);
+          currentUrl.searchParams.delete("gender");
+          window.history.replaceState({}, "", currentUrl.toString());
+          location.reload();
         });
-
+        mangaList.appendChild(clearButton);
+      
+        for (const genre of genres) {
+          const button = document.createElement("button");
+          button.classList.add("tag");
+      
+          // Add the "tag-checked" class to the selected genre button
+          if (genre === genderParam) {
+            button.classList.add("tag-checked");
+          }
+      
+          button.textContent = genre;
+          button.addEventListener("click", () => {
+            const currentUrl = new URL(window.location.href);
+            currentUrl.searchParams.set("gender", genre);
+            window.history.replaceState({}, "", currentUrl.toString());
+            location.reload();
+          });
+          mangaList.appendChild(button);
+        }
+      
         firstLoad = false;
+      }
     }
-}
 
 const handleInfiniteScroll = () => {
     if ((window.innerHeight + window.pageYOffset) >= (document.body.offsetHeight - 500)) {
+        document.getElementById('spinner').style.display = 'block';
         loadList();
+        document.getElementById('spinner').style.display = 'none';
         window.removeEventListener("scroll", handleInfiniteScroll);
         realLoaded = 0;
     }
